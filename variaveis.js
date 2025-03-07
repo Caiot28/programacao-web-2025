@@ -14,9 +14,8 @@ let pi = 3.14;
 console.log("pi = "+pi);
 
 let b = true;
-
 console.log(`b = ${b}`);
 
-let c;
-
+let c = null;
 console.log(`c = ${c}`);
+

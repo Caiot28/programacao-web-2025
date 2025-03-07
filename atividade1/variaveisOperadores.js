@@ -11,4 +11,4 @@ x = a * b;
 console.log(`Resultado da operação entre ${a} * ${b} = ${x}`);
 
 x = a / b;
-console.log(`Resultado da operaçã-00o entre ${a} / ${b} = ${x}`);
+console.log(`Resultado da operação entre ${a} / ${b} = ${x}`);

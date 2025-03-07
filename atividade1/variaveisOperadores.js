@@ -1,11 +1,14 @@
 let a = 20;
 let b = 4;
-let w = a + b;
-let x = a - b;
-let y = a * b;
-let z = a / b;
 
-console.log(`Resultado da operacao entre ${a} + ${b} = ${w}`);
-console.log(`Resultado da operacao entre ${a} - ${b} = ${x}`);
-console.log(`Resultado da operacao entre ${a} * ${b} = ${y}`);
-console.log(`Resultado da operacao entre ${a} / ${b} = ${z}`);
+let x = a + b;
+console.log(`Resultado da operação entre ${a} + ${b} = ${x}`);
+
+x = a - b;
+console.log(`Resultado da operação entre ${a} - ${b} = ${x}`);
+
+x = a * b;
+console.log(`Resultado da operação entre ${a} * ${b} = ${x}`);
+
+x = a / b;
+console.log(`Resultado da operaçã-00o entre ${a} / ${b} = ${x}`);

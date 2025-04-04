@@ -5,29 +5,39 @@ const app = express();
 
 let lista = new Map();
 
-app.get('/adicionar/:nome/:qtd', (req, res)=>{
-    estoque.adicionar(req.params.nome, parseInt(req.params.qtd), lista);
-    res.send(`Adicionou ${req.params.qtd} ${req.params.nome}`);
+app.get('/', (req, res)=>{
+    let html = '<h1>App Estoque</h1>';
+    html += '<h3>Rotas disponíveis: </h3>';
+    html+= '<p>/adicionar/id:/:nome/:qtd</p>'
+    html+= '<p>/listar</p>'
+    html+= '<p>/remover/:id </p>'
+    html+= '<p>/editar/:id/:qtd </p>'
+    res.send(html);
+});
+
+app.get('/adicionar/:id/:nome/:qtd', (req, res)=>{
+    let item = {
+        id : Number(req.params.id),
+        nome : req.params.nome,
+        qtd : Number(req.params.qtd)
+    }
+    res.send(estoque.adicionar(item));
 });
 
 app.get('/listar', (req, res) => {
-    let resposta = '';
-    lista.forEach((quantidade, produto) => {
-        resposta += `Nome: ${produto}, Quantidade: ${quantidade}<br>`;
-        resposta += `\n`;
-    });
   
-    res.send(resposta);
+    res.send(estoque.listar());
   });
 
 app.get('/remover/:id', (req, res)=>{
-    estoque.remover(req.params.id, lista)
+    
     res.send(`${req.params.id} removido com sucesso`)
 });
 
 app.get('/editar/:id/:qtd', (req, res)=>{
-    estoque.editar(req.params.id, req.params.qtd, lista)
-    res.send(`Editado com sucesso`)
+    let id = Number(req.params.id);
+    let qtd = Number(req.params.qtd);
+    res.send(estoque.editar(id, qtd));
 });
 
 const PORT = 8080;

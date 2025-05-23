@@ -1,5 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const { getIndexView } = require('./controllers/agendamentoController');
 const app = express()
 
 app.engine('html', mustacheExpress());
@@ -7,10 +8,8 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.urlencoded({extended: true}));
 
-app.get('/', (req, res)=>{
-    
-    res.render('index.html');
-});
+const agendamentoController = require('./controllers/agendamentoController')
+app.get('/', agendamentoController.getIndexView);
 
 app.post('/agendar_consulta', (req, res)=>{
 
@@ -20,19 +19,51 @@ app.post('/agendar_consulta', (req, res)=>{
 
     if(dados.inputNome.length == 0){
         erro = true;
-        campos_invalidos.push("inputNome");
+        campos_invalidos.push("Nome");
     }
     if(dados.inputSobrenome.length == 0){
         erro = true;
-        campos_invalidos.push("inputSobrenome");
+        campos_invalidos.push("Sobrenome");
     }
     if(dados.inputCPF.length == 0){
         erro = true;
-        campos_invalidos.push("inputCPF");
+        campos_invalidos.push("CPF");
     }
-    console.log(req.body)
+    if(dados.inputTelefone.length == 0){
+        erro = true;
+        campos_invalidos.push("Telefone");
+    }
+    if(dados.inputCEP.length == 0){
+        erro = true;
+        campos_invalidos.push("CEP");
+    }
+    if(dados.inputEndereco.length == 0){
+        erro = true;
+        campos_invalidos.push("Endereco");
+    }
+    if(dados.inputDataNasc.length == 0){
+        erro = true;
+        campos_invalidos.push("Data de Nascimento");
+    }
 
-    res.render('index.html', (erro, campos_invalidos, dados));
+    if(dados.inputClinica == null){
+        erro = true;
+        campos_invalidos.push("Clinica");
+    }
+    if(dados.inputHora.length == 0){
+        erro = true;
+        campos_invalidos.push("Hora");
+    }
+    if(dados.inputData.length == 0){
+        erro = true;
+        campos_invalidos.push("Data");
+    }
+    if(dados.inputEspecialidade == null){
+        erro = true;
+        campos_invalidos.push("Especialidade");
+    }
+    
+    res.render('index.html', {erro, campos_invalidos, dados});
 });
 
 const PORT = 8080;

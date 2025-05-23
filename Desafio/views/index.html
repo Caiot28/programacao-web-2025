@@ -40,26 +40,27 @@
                         </div>
                         <div class="col-6 mt-1">
                             <label for = "inputDataNasc" class = "form-label">Data de Nascimento</label>
-                            <input type = "date" class = "form-control" name = "inputDataNasc" id = "inputDataNasc">
+                            <input type = "date" class = "form-control" name = "inputDataNasc" id = "inputDataNasc" value="{{dados.inputDataNasc}}">
                         </div>
                         <div class="col-6 mt-1">
                             <label for = "inputTelefone" class ="form-label">Telefone</label>
-                            <input type="text" class = "form-control" name = "inputTelefone" id = "inputTelefone">  
+                            <input type="text" class = "form-control" name = "inputTelefone" id = "inputTelefone" value="{{dados.inputTelefone}}">  
                         </div>
                         <div class="col-6 mt-1">
                             <label for = "inputCEP" class ="form-label">CEP</label>
-                            <input type="text" class = "form-control" name = "inputCEP" id = "inputCEP">  
+                            <input type="text" class = "form-control" name = "inputCEP" id = "inputCEP" value="{{dados.inputCEP}}">  
                         </div>
                         <div class = "col-md-12 mt-1">
                             <label for = "inputEndereco" class = "form-label">Endereço</label>
-                            <input type="text" class = "form-control" name = "inputEndereco" id = "inputEndereco">
+                            <input type="text" class = "form-control" name = "inputEndereco" id = "inputEndereco" value="{{dados.inputEndereco}}">
                         </div>
                 </div>
                 <div class = "row mt-3">
                     <h3>Dados da Consulta</h3>
                     <div class="col-6 mt-1">
                         <label for="inputClinica" class="form-label">Clínica</label>
-                        <select class="form-select" name ="inputClinica" id="inputClinica" required>
+                        <select class="form-select" name ="inputClinica" id="inputClinica" value="{{dados.inputClinica}}">
+                          <option selected disabled>Selecione: </option>
                           <option value="Clínica Brasília">Clínica Brasília</option>
                           <option value="Clínica Taguatinga">Clínica Taguatinga</option>
                           <option value="Clínica Ceilândia">Clínica Ceilândia</option>
@@ -67,7 +68,8 @@
                     </div>
                     <div class="col-6 mt-1">
                         <label for = "inputEspecialidade" class = "form-label">Especialidade</label>
-                        <select class = "form-select" name = "inputEspecialidade" id ="inputEspecialidade" required>
+                        <select class = "form-select" name = "inputEspecialidade" id ="inputEspecialidade" value="{{dados.inputEspecialidade}}">
+                            <option selected disabled>Selecione: </option>
                             <option value="Ortopedia">Ortopedia</option>
                             <option value="Cardiologia">Cardiologia</option>
                             <option value="Pediatria">Pediatria</option>
@@ -75,15 +77,15 @@
                     </div>
                     <div class="col-6 mt-1">
                         <label for ="inputData" class = "form-label">Data</label>
-                        <input type="date" class = "form-control" name = "inputData" id ="inputData">
+                        <input type="date" class = "form-control" name = "inputData" id ="inputData" value="{{dados.inputData}}">
                     </div>
                     <div class="col-6 mt-1">
                         <label for = "inputHora" class = "form-label">Hora</label>
-                        <input type="time" class = "form-control" name = "inputHora" id = "inputHora">
+                        <input type="time" class = "form-control" name = "inputHora" id = "inputHora" value="{{dados.inputHora}}">
                     </div>
                     <div class ="col-md-12 mt-1">
                         <label for = "inputObs" class = "form-label">Observação</label>
-                        <textarea class="form-control" name = "inputObs" id="inputObs" rows="3"></textarea>
+                        <textarea class="form-control" name = "inputObs" id="inputObs" rows="3" value="{{dados.inputObs}}"></textarea>
                     </div>
                 </div>
                 <div class = "row mt-3 mb-3">

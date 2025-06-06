@@ -1,11 +1,36 @@
+const AgendamentoConsulta = require('../models/agendamentoConsultaModels');
+
 function getIndexView(req, res){
-    
     res.render('index.html');
 }
 
+function getAgendamentosView(req, res){
+    AgendamentoConsulta.findAll().then((agendamentos)=>{
+        res.render('agendamentos.html', {agendamentos});
+    });
+}
+
 function postAgendarConsulta(req, res){
-    let dados = req.body;
-    let erro = false;
+    let dados_consulta = req.body;
+    let campos_invalidos = validarRequisicaoAgendamentoConsulta(dados_consulta);
+
+    if(campos_invalidos.length == 0){
+        AgendamentoConsulta.create(dados_consulta).then(()=>{
+            res.redirect('/agendamentos');
+        });
+    }
+    else{
+        res.render('index.html', {campos_invalidos, dados_consulta});
+    }
+}
+
+module.exports = {
+    getIndexView,
+    postAgendarConsulta,
+    getAgendamentosView
+}
+
+function validarRequisicaoAgendamentoConsulta(dados_consulta){
     let campos_invalidos = [];
 
     if(dados.inputNome.length == 0){
@@ -36,7 +61,6 @@ function postAgendarConsulta(req, res){
         erro = true;
         campos_invalidos.push("Data de Nascimento");
     }
-
     if(dados.inputClinica == null){
         erro = true;
         campos_invalidos.push("Clinica");
@@ -53,10 +77,6 @@ function postAgendarConsulta(req, res){
         erro = true;
         campos_invalidos.push("Especialidade");
     }
-    res.render('index.html', {erro, campos_invalidos, dados});
-}
 
-module.exports = {
-    getIndexView,
-    postAgendarConsulta
+    return campos_invalidos;
 }
